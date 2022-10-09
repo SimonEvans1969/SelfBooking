@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('class_sessions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('club_id');
             $table->bigInteger('class_id')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('class_sessions');
     }
 };
