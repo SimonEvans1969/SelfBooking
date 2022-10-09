@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-     // Added * to proxies as per https://github.com/tighten/ziggy/issues/410#issuecomment-814485042
+    // Added * to proxies as per https://github.com/tighten/ziggy/issues/410#issuecomment-814485042
     protected $proxies = '*';
 
     /**
