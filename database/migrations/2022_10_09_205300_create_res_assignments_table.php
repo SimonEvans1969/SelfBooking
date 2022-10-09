@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('res_assignments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('club_id');
             $table->bigInteger('resource_id');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('res_assignments');
     }
 };

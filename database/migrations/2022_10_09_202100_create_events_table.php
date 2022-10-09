@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('club_id');
             $table->bigInteger('term_id')->nullable();
+            $table->bigInteger('parent_event_id')->nullable();
             $table->string('code');
+            $table->string('name');
             $table->text('description');
-            $table->bigInteger('classtype_id')->nullable();
+            $table->bigInteger('event_type_id')->nullable();
             $table->bigInteger('bookingtype_id');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->time('start_time')->nullable();
+            $table->date('end_date')->nullable();
+            $table->time('end_time')->nullable();
             $table->integer('capacity')->nullable();
             $table->integer('status');
             $table->timestamps();
@@ -38,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('events');
     }
 };
