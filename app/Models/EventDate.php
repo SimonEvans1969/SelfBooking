@@ -11,14 +11,19 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements Auditable
+class EventDate extends Model implements Auditable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
     use \OwenIt\Auditing\Auditable;
+
+    /** BookingGroup Stati - inherited from Event - but can be overridden at Booking Group level */
+    const OPEN          = 1;  // Complete and published
+    const CLOSED        = 2;  // Complete and closed to bookings, only visible to staff
+    const ARCHIVED      = 3;  // Complete, closed to bookings, no longer visible on standard staff screens
+
+    /** Booking_by and Visibility - inherited from Event - but can be overridden at Booking Group level */
+    const PUBLIC        = 0;
+    const MEMBERS_ONLY  = 1;
+    const STAFF_ONLY    = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -26,9 +31,14 @@ class User extends Authenticatable implements Auditable
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'event_id',
+        'date',
+        'start_time',
+        'end_time',
+        'booking_group_id',
+        'status',
+        'booking_by',
+        'visibility',
     ];
 
     /**
@@ -37,10 +47,6 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -49,7 +55,8 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'start_date' => 'date:Y-m-d',
+        'end_date' => 'date:Y-m-d'
     ];
 
     /**
@@ -58,6 +65,5 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
     ];
 }
