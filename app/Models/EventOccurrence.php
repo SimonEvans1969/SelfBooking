@@ -2,19 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Contracts\Auditable;
 
-class EventDate extends Model implements Auditable
+class EventOccurrence extends BaseModel
 {
-    use \OwenIt\Auditing\Auditable;
-
     /** BookingGroup Stati - inherited from Event - but can be overridden at Booking Group level */
     const OPEN          = 1;  // Complete and published
     const CLOSED        = 2;  // Complete and closed to bookings, only visible to staff

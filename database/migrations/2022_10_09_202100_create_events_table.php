@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('club_id');
+            $table->foreignId('club_id')->references('id')->on('clubs');
             $table->bigInteger('term_id')->nullable();
             $table->bigInteger('parent_event_id')->nullable();
             $table->string('code');

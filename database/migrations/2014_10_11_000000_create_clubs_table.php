@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class_times', function (Blueprint $table) {
+        Schema::create('clubs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('club_id');
-            $table->bigInteger('class_id');
-            $table->integer('day');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->string('name');
+            $table->string('subdomain');
+            $table->text('description');
+            $table->string('type');
+            $table->string('logo_path', 2048)->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_times');
+        Schema::dropIfExists('clubs');
     }
 };

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('res_assignments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('club_id');
+            $table->foreignId('club_id')->references('id')->on('clubs');
             $table->bigInteger('resource_id');
-            $table->bigInteger('class_id')->nullable();
+            $table->bigInteger('event_id')->nullable();
             $table->bigInteger('session_id')->nullable();
             $table->integer('status');
             $table->timestamps();

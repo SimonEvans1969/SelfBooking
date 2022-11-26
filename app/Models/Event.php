@@ -2,19 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Contracts\Auditable;
-
-class Event extends Model implements Auditable
+class Event extends BaseModel
 {
-    use \OwenIt\Auditing\Auditable;
-
     /** Event Stati */
     const DRAFT         = 0;  // Can be incomplete, only visible to staff, can be deleted
     const OPEN          = 1;  // Complete and published

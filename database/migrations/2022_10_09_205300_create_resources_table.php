@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('club_id');
+            $table->foreignId('club_id')->references('id')->on('clubs');
             $table->bigInteger('resource_type_id');
             $table->string('code');
             $table->text('description');

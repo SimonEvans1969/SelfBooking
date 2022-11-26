@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Contracts\Auditable;
 
 class User extends Authenticatable implements Auditable
 {
@@ -19,6 +18,7 @@ class User extends Authenticatable implements Auditable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use \OwenIt\Auditing\Auditable;
+    use Userstamps;
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +37,7 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $hidden = [
+        'club_id',
         'password',
         'remember_token',
         'two_factor_recovery_codes',

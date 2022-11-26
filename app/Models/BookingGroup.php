@@ -2,19 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use OwenIt\Auditing\Contracts\Auditable;
-
-class BookingGroup extends Model implements Auditable
+class BookingGroup extends BaseModel
 {
-    use \OwenIt\Auditing\Auditable;
-
     /** BookingGroup Stati - inherited from Event - but can be overridden at Booking Group level */
     /** Cannot be DRAFT as action to create it is publication from Template */
     const OPEN          = 1;  // Complete and published

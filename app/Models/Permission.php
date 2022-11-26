@@ -2,13 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-
-class Permission extends Model implements Auditable
+class Permission extends BaseModel
 {
-    use \OwenIt\Auditing\Auditable;
-
     protected $fillable = [
         'name'
     ];
